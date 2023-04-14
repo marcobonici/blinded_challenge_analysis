@@ -1,0 +1,15 @@
+2023-02-23_160000__12.txt	  Number of steps:39505	 Steps accepted:13311	 acc = 0.34	min(-loglike) = 19.79
+2023-02-23_160000__4.txt	  Number of steps:39278	 Steps accepted:13021	 acc = 0.33	min(-loglike) = 19.69
+2023-02-23_160000__6.txt	  Number of steps:39632	 Steps accepted:13431	 acc = 0.34	min(-loglike) = 19.73
+2023-02-23_160000__3.txt	  Number of steps:39028	 Steps accepted:12981	 acc = 0.33	min(-loglike) = 19.76
+2023-02-23_160000__8.txt	  Number of steps:39658	 Steps accepted:13231	 acc = 0.33	min(-loglike) = 19.75
+2023-02-23_160000__9.txt	  Number of steps:39365	 Steps accepted:13301	 acc = 0.34	min(-loglike) = 19.79
+2023-02-23_160000__11.txt	  Number of steps:39598	 Steps accepted:13281	 acc = 0.34	min(-loglike) = 19.70
+2023-02-23_160000__1.txt	  Number of steps:38064	 Steps accepted:12741	 acc = 0.33	min(-loglike) = 19.75
+2023-02-23_160000__5.txt	  Number of steps:39547	 Steps accepted:13271	 acc = 0.34	min(-loglike) = 19.78
+2023-02-23_160000__2.txt	  Number of steps:39125	 Steps accepted:13241	 acc = 0.34	min(-loglike) = 19.73
+2023-02-23_160000__7.txt	  Number of steps:39670	 Steps accepted:13361	 acc = 0.34	min(-loglike) = 19.76
+2023-02-23_160000__10.txt	  Number of steps:39475	 Steps accepted:13121	 acc = 0.33	min(-loglike) = 19.80
+--> Total    number    of    steps: 471945
+--> Total number of accepted steps: 158292
+--> Minimum of -logLike           : 19.69

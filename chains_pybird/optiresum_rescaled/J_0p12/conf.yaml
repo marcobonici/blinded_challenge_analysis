@@ -1,0 +1,74 @@
+output: bPk
+multipole: 2
+wedge: 0
+skycut: 1
+z: [0.61]
+with_redshift_bin: False
+with_AP: True
+z_AP: [0.61]
+Omega_m_AP: 0.3
+with_window: False
+with_binning: True
+with_fibercol: False
+
+with_stoch: True
+optiresum: True
+
+with_bao: False
+with_exact_time: False
+
+xmin: [0.007]
+xmax: [0.12]
+
+covmat_file: [pybird/Covariance/CovFullChallengeJapanCMASS2_mean_resc4.dat]
+spectrum_file: [pybird/DataSims/ps1D_PTChallenge_mean.dat]
+
+nd: 3.e-4
+km: 0.7
+kr: 0.7
+
+with_bbn: False
+omega_b_BBNcenter: 0.021439
+omega_b_BBNsigma: 0.00036
+
+eft_basis: westcoast
+eft_prior:
+     b1:
+          type: flat
+          range: null
+     c2:
+          type: flat
+          range: null
+     c4:
+          type: gauss
+          mean: [0]
+          range: [2.]
+     b3:
+          type: marg_gauss
+          mean: [0.]
+          range: [10.]
+     cct:
+          type: marg_gauss
+          mean: [0]
+          range: [4.]
+     cr1:
+          type: marg_gauss
+          mean: [0.]
+          range: [8.]
+     cr2: #
+          type: unvaried
+#          type: marg_gauss #Uncomment for the hexadecapole !
+#          mean: [0., 0.]
+#          range: [8., 8.]
+     ce0: # k^0 stochastic
+          type: unvaried
+          # mean: [0., 0.]
+          # range: [2., 2.]
+     ce1:
+          type: marg_gauss
+          mean: [0.]
+          range: [2.]
+     ce2: # k^2 quadrupole stochastic
+          type: marg_gauss
+          mean: [0.]
+          range: [4.]

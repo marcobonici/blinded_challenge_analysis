@@ -1,0 +1,48 @@
+#------Experiments to test (separated with commas)-----
+data.experiments=['eft_challenge']
+data.over_sampling=[1, 4]
+
+#------ Parameter list -------
+# data.parameters[class name] = [mean, min, max, 1-sigma, scale, role]
+# - if min max irrelevant, put to -1 or None (if you want a boundary of -1, use -1.0)
+# - if fixed, put 1-sigma to 0
+# - if scale irrelevant, put to 1, otherwise to the appropriate factor
+# - role is either 'cosmo', 'nuisance' or 'derived'
+
+# Cosmological parameters list
+data.parameters['Omega_m']		= [0.319 , None, None, 0.005, 1, 'cosmo']
+data.parameters['h']         	= [0.6541, None, None, 0.005, 1, 'cosmo']
+data.parameters['ln10^{10}A_s'] = [3.0515, None, None, 0.030, 1, 'cosmo']
+data.parameters['n_s']       	= [0.9649, None, None, 0. , 1,   'cosmo']
+data.parameters['fbm']       	= [0.1571, None, None, 0. , 1,   'cosmo']
+
+# Nuisance parameter list, same call, except the name does not have to be a class name
+data.parameters['b1']  = [2, 0, 4, 0.5, 1,  'nuisance']
+data.parameters['c2']  = [1.5, -4, 4, 0.5, 1,  'nuisance']
+data.parameters['c4']  = [0., -10, 10, 0.5, 1,  'nuisance']
+
+# Derived parameters
+data.parameters['A_s']          = [0, None, None, 0,     1,   'derived']
+data.parameters['sigma8']          = [0, None, None, 0,     1,   'derived']
+
+#------ Mcmc parameters ----
+# Number of steps taken, by default (overwritten by the -N command)
+data.N = 10
+# Number of accepted steps before writing to file the chain. Larger means less
+# access to disc, but this is not so much time consuming.
+data.write_step = 10
+
+#-----Likelihood-eft_boss_cmass-----
+eft_challenge.data_directory = data.path['data']
+eft_challenge.use_nuisance = ['b1', 'c2', 'c4']
+eft_challenge.configfile = data.path['root'] + '/chains/optiresum_resc/J_0p16/conf.yaml'
+
+-----------Cosmological-arguments---------
+data.cosmo_arguments.update({'output': ' mPk ', 'P_k_max_h/Mpc': 1.0, 'z_max_pk': 0.61})
+
+#--------Default-Configuration------
+data.path['root']       = '/hpc/home/guido.damico/montepython_public'
+data.path['MontePython']        = '/hpc/home/guido.damico/montepython_public/montepython'
+data.path['data']       = '/hpc/home/guido.damico/data'
+data.path['cosmo']      = '/hpc/home/guido.damico/class'
+data.path['clik']       = '/hpc/home/guido.damico/planck/code/plc_3.0/plc-3.01'
