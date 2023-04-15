@@ -1,5 +1,4 @@
 using Statistics
-using Base: @kwdef
 using Distributions
 using SimpleChains
 using Static
@@ -14,7 +13,6 @@ using Optim
 using Transducers
 using Effort
 using BlindedChallenge
-using Distributed
 using ClusterManagers
 
 n_proc = 20
@@ -24,6 +22,22 @@ n_steps = 1000
 addprocs_lsf(n_proc)
 
 @everywhere begin
+
+    using Statistics
+    using Distributions
+    using SimpleChains
+    using Static
+    using NPZ
+    using ForwardDiff
+    using LinearAlgebra
+    using Statistics
+    using ProgressMeter
+    using Turing
+    using Pathfinder
+    using Optim
+    using Transducers
+    using Effort
+    using BlindedChallenge
 
     resum = "optimal"
     if resum == "lagrangian"
