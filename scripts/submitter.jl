@@ -39,12 +39,12 @@ end
 
 parsed_args = parse_commandline()
 
-nsteps  = parsed_args["nsteps"]
-nadapts = parsed_args["nadapts"]
-nchains = parsed_args["nchains"]
-nprocs = parsed_args["nprocs"]
+nsteps  = string(parsed_args["nsteps"])
+nadapts = string(parsed_args["nadapts"])
+nchains = string(parsed_args["nchains"])
+nprocs = string(parsed_args["nprocs"])
 resum = parsed_args["resum"]
-rescale_cov = parsed_args["rescale_cov"]
+rescale_cov = string(parsed_args["rescale_cov"])
 path_output = parsed_args["path_output"]
 
 mkdir(path_output)
