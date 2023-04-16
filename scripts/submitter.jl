@@ -80,7 +80,9 @@ create_submission_sh(path_output, resum, nprocs)
 create_job_sh(nsteps, nadapts, nchains, nprocs, resum, rescale_cov, path_output)
 cmd_sub = `chmod +x $path_output/submission.sh`
 cmd_job = `chmod +x $path_output/job.sh`
-cmd_exec = `.$path_output/submission.sh`
+cmd_move = `cd $path`
+cmd_exec = `./submission.sh`
 run(cmd_sub)
 run(cmd_job)
+run(cmd_move)
 run(cmd_exec)
