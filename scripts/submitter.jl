@@ -70,8 +70,8 @@ end
 function create_submission_sh(path_output, resum, nprocs)
     touch(path_output*"/submission.sh")
     file = open(path_output*"/submission.sh", "w")
-    write(file, "bsub -P c7 -q medium -o ") *path_output*"/job_"*resum*".out -e "*
-    path_output*"/job_"*resum*".err -n "*nprocs*" -M 10000 "*path_output*"/job.sh"
+    write(file, "bsub -P c7 -q medium -o " *path_output*"/job_"*resum*".out -e "*
+    path_output*"/job_"*resum*".err -n "*nprocs*" -M 10000 "*path_output*"/job.sh")
 
     return nothing
 end
