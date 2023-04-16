@@ -78,5 +78,5 @@ end
 
 create_submission_sh(path_output, resum, nprocs)
 create_job_sh(nsteps, nadapts, nchains, nprocs, resum, rescale_cov, path_output)
-run("chmod +x "*path_output*"/submission.sh")
-run("chmod +x "*path_output*"/job.sh")
+run(`chmod +x `*path_output*`/submission.sh`)
+run(`chmod +x `*path_output*`/job.sh`)
