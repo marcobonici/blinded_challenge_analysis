@@ -6,21 +6,21 @@ function parse_commandline()
 
     @add_arg_table s begin
         "--nsteps"
-            help = "The number steps of the chains"
+            help = "The number of steps for each chain"
             arg_type = Int
             default = 1000
         "--nadapts"
-            help = "The number of steps to adapt the NUTS algorithm"
+            help = "The number of steps to adapt the HMC mass matrix"
             arg_type = Int
             default = 500
         "--nchains"
             help = "The number of chains to run in parallel"
             arg_type = Int
-            default = 4
+            default = 16
         "--nprocs"
             help = "The number of process to ask for each run"
             arg_type = Int
-            default = 4
+            default = 8
         "--resum"
             help = "The kind of resummation to use"
             arg_type = String
@@ -34,7 +34,7 @@ function parse_commandline()
             arg_type = String
             required = true
         "--julia_command", "-j"
-            help = "Command to run julia"
+            help = "Command to run julia. Modify only if the default julia mustn't be used"
             arg_type = String
             default = "julia"
     end
@@ -78,7 +78,7 @@ function create_submission_sh(path_output, resum, nprocs)
     touch(path_output*"/submission.sh")
     file = open(path_output*"/submission.sh", "w")
     write(file, "bsub -P c7 -q medium -o " *path_output*"/job_"*resum*".out -e "*
-    path_output*"/job_"*resum*".err -n "*nprocs*" -M 10000 "*path_output*"/job.sh")
+    path_output*"/job_"*resum*".err -n "*nprocs*" -M 12000 "*path_output*"/job.sh")
     close(file)
 
     return nothing
