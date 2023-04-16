@@ -1,1 +1,2 @@
-bsub -P c7 -q medium -o ciccio.out -e ciccio.err -n 32 -M 10000 /home/mbonici/blinded_challenge_analysis/scripts/lol.sh
+#!/bin/bash
+/home/mbonici/julia-1.9.0-rc2/bin/julia -t 32 mcmc.jl
