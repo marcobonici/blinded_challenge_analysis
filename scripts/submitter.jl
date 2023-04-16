@@ -85,7 +85,8 @@ function create_submission_sh(path_output, resum, nprocs)
 end
 
 create_submission_sh(path_output, resum, nprocs)
-create_job_sh(nsteps, nadapts, nchains, nprocs, resum, rescale_cov, path_output)
+create_job_sh(nsteps, nadapts, nchains, nprocs, resum, rescale_cov, path_output,
+julia_command)
 cmd_sub = `chmod +x $path_output/submission.sh`
 cmd_job = `chmod +x $path_output/job.sh`
 cmd_move = `cd $path_output`
