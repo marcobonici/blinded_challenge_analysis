@@ -17,7 +17,7 @@ function parse_commandline()
             help = "The number of chains to run in parallel"
             arg_type = Int
             default = 4
-        "--ncprocs"
+        "--nprocs"
             help = "The number of process to ask for each run"
             arg_type = Int
             default = 4
