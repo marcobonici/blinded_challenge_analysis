@@ -1,3 +1,4 @@
+using Distributed
 using Statistics
 using Distributions
 using SimpleChains
@@ -13,14 +14,12 @@ using Optim
 using Transducers
 using Effort
 using BlindedChallenge
-using Distributed
-using ClusterManagers
 
-n_proc = 20
+n_proc = 5
 n_adapt = 500
 n_steps = 1000
 
-addprocs_lsf(n_proc)
+addprocs(n_proc)
 
 
 @everywhere using Statistics
