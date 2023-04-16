@@ -60,12 +60,6 @@ resum = parsed_args["resum"]
 rescale_cov = parsed_args["rescale_cov"]
 path_output = parsed_args["path_output"]
 
-mkdir(path_output)
-
-open(path_output*"/config.json", "w") do io
-    JSON3.pretty(io, parsed_args)
-end
-
 if resum == "lagrangian"
     println("You choose lagrangian resummation!")
 elseif resum == "optimal"
