@@ -13,13 +13,59 @@ using Optim
 using Transducers
 using Effort
 using BlindedChallenge
+using JSON3
 using BSON: @save, @load
 
-nsteps  = 1500
-nadapts = 500
-nchains = 32
+using ArgParse
 
-resum = "optimal"
+
+function parse_commandline()
+    s = ArgParseSettings()
+
+    @add_arg_table s begin
+        "--nsteps"
+            help = "The number steps of the chains"
+            arg_type = Int
+            default = 1000
+        "--nadapts"
+            help = "The number of steps to adapt the NUTS algorithm"
+            arg_type = Int
+            default = 500
+        "--nchains"
+            help = "The number of chains to run in parallel"
+            arg_type = Int
+            default = 4
+        "--resum"
+            help = "The kind of resummation to use"
+            arg_type = String
+            default = "lagrangian"
+        "--rescale_cov"
+            help = "Boolean, used to decided wether to rescale to cov or not"
+            arg_type = Bool
+            default = false
+        "--path_output", "-o"
+            help = "Output folder, where store the chains"
+            required = true
+    end
+
+    return parse_args(s)
+end
+
+parsed_args = parse_commandline()
+
+nsteps  = parsed_args["nsteps"]
+nadapts = parsed_args["nadapts"]
+nchains = parsed_args["nchains"]
+resum = parsed_args["resum"]
+rescale_cov = parsed_args["rescale_cov"]
+path_output = parsed_args["path_output"]
+
+mkdir(path_output)
+
+open(path_output*"/config.json", "w") do io
+    JSON3.pretty(io, parsed_args)
+end
+
 if resum == "lagrangian"
     println("You choose lagrangian resummation!")
 elseif resum == "optimal"
@@ -28,7 +74,7 @@ else
     error("You didn't choose a viable resummation!")
 end
 
-rescale_cov = false
+
 if rescale_cov
     println("You decided to rescale the covariance cov!")
     scaling_factor = 4
@@ -146,7 +192,7 @@ init_params_20 = collect.(eachrow(result_multi_20.draws_transformed.value[1:ncha
 
 chains_20 = sample(model_20, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_20)
 
-@save "chains_"*resum*"_20.bson" chains_20
+@save path_output*"/chains_"*resum*"_20.bson" chains_20
 
 n = 18
 
@@ -159,7 +205,7 @@ init_params_18 = collect.(eachrow(result_multi_18.draws_transformed.value[1:ncha
 
 chains_18 = sample(model_18, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_18)
 
-@save "chains_"*resum*"_18.bson" chains_18
+@save path_output*"/chains_"*resum*"_18.bson" chains_18
 
 n = 16
 
@@ -172,7 +218,7 @@ init_params_16 = collect.(eachrow(result_multi_16.draws_transformed.value[1:ncha
 
 chains_16 = sample(model_16, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_16)
 
-@save "chains_"*resum*"_16.bson" chains_16
+@save path_output*"/chains_"*resum*"_16.bson" chains_16
 
 n = 14
 
@@ -185,7 +231,7 @@ init_params_14 = collect.(eachrow(result_multi_14.draws_transformed.value[1:ncha
 
 chains_14 = sample(model_14, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_14)
 
-@save "chains_"*resum*"_14.bson" chains_14
+@save path_output*"/chains_"*resum*"_14.bson" chains_14
 
 n = 12
 
@@ -198,4 +244,4 @@ init_params_12 = collect.(eachrow(result_multi_12.draws_transformed.value[1:ncha
 
 chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_12)
 
-@save "chains_"*resum*"_12.bson" chains_12
+@save path_output*"/chains_"*resum*"_12.bson" chains_12
