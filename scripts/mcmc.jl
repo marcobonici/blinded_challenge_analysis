@@ -15,7 +15,7 @@ using Effort
 using BlindedChallenge
 using BSON: @save, @load
 
-nsteps  = 2000
+nsteps  = 1500
 nadapts = 500
 nchains = 32
 
@@ -192,4 +192,4 @@ init_params_12 = collect.(eachrow(result_multi_12.draws_transformed.value[1:ncha
 
 chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_12)
 
-@save "chains_"*resum*"_.bson" chains_20
+@save "chains_"*resum*"_.bson" chains_20 chains_18 chains_16 chains_14 chains_12
