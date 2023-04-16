@@ -19,7 +19,7 @@ nsteps  = 1500
 nadapts = 500
 nchains = 32
 
-resum = "optimal"
+resum = "lagrangian"
 if resum == "lagrangian"
     println("You choose lagrangian resummation!")
 elseif resum == "optimal"
@@ -144,7 +144,7 @@ model_20 = pplmodel(data_20, cov_20.*scaling_factor, n, Mono_Emu, Quad_Emu)
 result_multi_20 = multipathfinder(model_20, 1000; nruns = 8, executor = Transducers.PreferParallel())
 init_params_20 = collect.(eachrow(result_multi_20.draws_transformed.value[1:nchains, :, 1]))
 
-chains_20 = sample(model_20, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_20)
+chains_20 = sample(model_20, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_20)
 
 @save "chains_"*resum*"_.bson" chains_20
 
@@ -157,7 +157,7 @@ model_18 = pplmodel(data_18, cov_18.*scaling_factor, n, Mono_Emu, Quad_Emu)
 result_multi_18 = multipathfinder(model_18, 1000; nruns = 8, executor = Transducers.PreferParallel())
 init_params_18 = collect.(eachrow(result_multi_18.draws_transformed.value[1:nchains, :, 1]))
 
-chains_18 = sample(model_18, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_18)
+chains_18 = sample(model_18, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_18)
 
 @save "chains_"*resum*"_.bson" chains_18
 
@@ -170,7 +170,7 @@ model_16 = pplmodel(data_16, cov_16.*scaling_factor, n, Mono_Emu, Quad_Emu)
 result_multi_16 = multipathfinder(model_16, 1000; nruns = 8, executor = Transducers.PreferParallel())
 init_params_16 = collect.(eachrow(result_multi_16.draws_transformed.value[1:nchains, :, 1]))
 
-chains_16 = sample(model_16, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_16)
+chains_16 = sample(model_16, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_16)
 
 @save "chains_"*resum*"_.bson" chains_16
 
@@ -183,7 +183,7 @@ model_14 = pplmodel(data_14, cov_14.*scaling_factor, n, Mono_Emu, Quad_Emu)
 result_multi_14 = multipathfinder(model_14, 1000; nruns = 8, executor = Transducers.PreferParallel())
 init_params_14 = collect.(eachrow(result_multi_14.draws_transformed.value[1:nchains, :, 1]))
 
-chains_14 = sample(model_14, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_14)
+chains_14 = sample(model_14, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_14)
 
 @save "chains_"*resum*"_.bson" chains_14
 
@@ -196,6 +196,6 @@ model_12 = pplmodel(data_12, cov_12.*scaling_factor, n, Mono_Emu, Quad_Emu)
 result_multi_12 = multipathfinder(model_12, 1000; nruns = 8, executor = Transducers.PreferParallel())
 init_params_12 = collect.(eachrow(result_multi_12.draws_transformed.value[1:nchains, :, 1]))
 
-chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_12)
+chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_12)
 
 @save "chains_"*resum*"_.bson" chains_12
