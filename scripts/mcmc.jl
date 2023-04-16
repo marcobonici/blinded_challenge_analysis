@@ -19,7 +19,7 @@ nsteps  = 1500
 nadapts = 500
 nchains = 32
 
-resum = "lagrangian"
+resum = "optimal"
 if resum == "lagrangian"
     println("You choose lagrangian resummation!")
 elseif resum == "optimal"
@@ -146,7 +146,7 @@ init_params_20 = collect.(eachrow(result_multi_20.draws_transformed.value[1:ncha
 
 chains_20 = sample(model_20, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_20)
 
-@save "chains_"*resum*"_.bson" chains_20
+@save "chains_"*resum*"_20.bson" chains_20
 
 n = 18
 
@@ -159,7 +159,7 @@ init_params_18 = collect.(eachrow(result_multi_18.draws_transformed.value[1:ncha
 
 chains_18 = sample(model_18, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_18)
 
-@save "chains_"*resum*"_.bson" chains_18
+@save "chains_"*resum*"_18.bson" chains_18
 
 n = 16
 
@@ -172,7 +172,7 @@ init_params_16 = collect.(eachrow(result_multi_16.draws_transformed.value[1:ncha
 
 chains_16 = sample(model_16, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_16)
 
-@save "chains_"*resum*"_.bson" chains_16
+@save "chains_"*resum*"_16.bson" chains_16
 
 n = 14
 
@@ -185,7 +185,7 @@ init_params_14 = collect.(eachrow(result_multi_14.draws_transformed.value[1:ncha
 
 chains_14 = sample(model_14, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_14)
 
-@save "chains_"*resum*"_.bson" chains_14
+@save "chains_"*resum*"_14.bson" chains_14
 
 n = 12
 
@@ -198,4 +198,4 @@ init_params_12 = collect.(eachrow(result_multi_12.draws_transformed.value[1:ncha
 
 chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains; init_params = init_params_12)
 
-@save "chains_"*resum*"_.bson" chains_12
+@save "chains_"*resum*"_12.bson" chains_12
