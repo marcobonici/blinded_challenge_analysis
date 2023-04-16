@@ -146,6 +146,8 @@ init_params_20 = collect.(eachrow(result_multi_20.draws_transformed.value[1:ncha
 
 chains_20 = sample(model_20, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_20)
 
+@save "chains_"*resum*"_.bson" chains_20
+
 n = 18
 
 data_18, k_18, cov_18, yerror_Mono_18, yerror_Quad_18 = BlindedChallenge.create_data(n)
@@ -157,6 +159,7 @@ init_params_18 = collect.(eachrow(result_multi_18.draws_transformed.value[1:ncha
 
 chains_18 = sample(model_18, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_18)
 
+@save "chains_"*resum*"_.bson" chains_18
 
 n = 16
 
@@ -169,6 +172,8 @@ init_params_16 = collect.(eachrow(result_multi_16.draws_transformed.value[1:ncha
 
 chains_16 = sample(model_16, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_16)
 
+@save "chains_"*resum*"_.bson" chains_16
+
 n = 14
 
 data_14, k_14, cov_14, yerror_Mono_14, yerror_Quad_14 = BlindedChallenge.create_data(n)
@@ -180,6 +185,7 @@ init_params_14 = collect.(eachrow(result_multi_14.draws_transformed.value[1:ncha
 
 chains_14 = sample(model_14, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_14)
 
+@save "chains_"*resum*"_.bson" chains_14
 
 n = 12
 
@@ -192,4 +198,4 @@ init_params_12 = collect.(eachrow(result_multi_12.draws_transformed.value[1:ncha
 
 chains_12 = sample(model_12, Turing.NUTS(nadapts, 0.65), MCMCThreads(), nsteps, nchains)#; init_params = init_params_12)
 
-@save "chains_"*resum*"_.bson" chains_20 chains_18 chains_16 chains_14 chains_12
+@save "chains_"*resum*"_.bson" chains_12
