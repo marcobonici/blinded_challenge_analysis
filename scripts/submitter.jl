@@ -58,7 +58,7 @@ function create_job_sh(nsteps, nadapts, nchains, nprocs, resum, rescale_cov, pat
     file = open(path_output*"/job.sh", "w")
     write(file, "#!/bin/bash")
     write(file, "\n")
-    write(file, "/home/mbonici/julia-1.9.0-rc2/bin/julia -t "*nprocs*" mcmc.jl --nsteps "*
+    write(file, "/home/mbonici/julia-1.9.0-rc2/bin/julia -t "*nprocs*" "*pwd()*"/mcmc.jl --nsteps "*
     nsteps*" --nadapts "*nadapts*" --nchains "*nchains*" --resum "*resum*" --rescale_cov "*
     rescale_cov*" --path_output "*path_output)
 
