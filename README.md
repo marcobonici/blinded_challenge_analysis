@@ -9,8 +9,8 @@ In the `scripts` folder there is the `submitter.jl` script, which can be used to
 julia submitter.jl --help
 ``
 
-for a list of options.
+for a list of options. In order to run the script, run it from _within_ the scripts folder.
 
 ## Authors
-- Marco Bonici, INAF-IASF (Milano)
-- Guido D'Amico, UNiversità degli Studi di Parma
+- Marco Bonici, PostDoctoral Researcher, INAF-IASF (Milano)
+- Guido D'Amico, Associate Professor, Università degli Studi di Parma
