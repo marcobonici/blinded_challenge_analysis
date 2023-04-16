@@ -17,7 +17,7 @@ using JSON3
 using BSON: @save, @load
 
 using ArgParse
-
+println(@__DIR__)
 
 function parse_commandline()
     s = ArgParseSettings()
@@ -124,12 +124,12 @@ end
 
 if resum == "lagrangian"
     println("You choose lagrangian resummation!")
-    Mono_Emu = load_emulator_PyBird("../trained_emulators/PyBird_061_10000_lagrangian_guido_spectra_check", "0")
-    Quad_Emu = load_emulator_PyBird("../trained_emulators/PyBird_061_10000_lagrangian_guido_spectra_check", "2");
+    Mono_Emu = load_emulator_PyBird(string(@__DIR__)*"/../trained_emulators/PyBird_061_10000_lagrangian_guido_spectra_check", "0")
+    Quad_Emu = load_emulator_PyBird(string(@__DIR__)*"/../trained_emulators/PyBird_061_10000_lagrangian_guido_spectra_check", "2");
 elseif resum == "optimal"
     println("You choose optimal resummation!")
-    Mono_Emu = load_emulator_PyBird("../trained_emulators/PyBird_061_10000_optiresum_final", "0")
-    Quad_Emu = load_emulator_PyBird("../trained_emulators/PyBird_061_10000_optiresum_final", "2");
+    Mono_Emu = load_emulator_PyBird(string(@__DIR__)*"/../trained_emulators/PyBird_061_10000_optiresum_final", "0")
+    Quad_Emu = load_emulator_PyBird(string(@__DIR__)*"/../trained_emulators/PyBird_061_10000_optiresum_final", "2");
 else
     error("You didn't choose a viable resummation!")
 end
