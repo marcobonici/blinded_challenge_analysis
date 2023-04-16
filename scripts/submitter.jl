@@ -33,7 +33,7 @@ function parse_commandline()
             help = "Output folder, where store the chains"
             arg_type = String
             required = true
-        "--julia_command", "-jc"
+        "--julia_command", "-j"
             help = "Command to run julia"
             arg_type = String
             default = "julia"
